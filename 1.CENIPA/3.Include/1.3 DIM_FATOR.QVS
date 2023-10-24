@@ -1,0 +1,19 @@
+set vTableName = 'DIM_FATOR';
+set vFileNameOrigin = 'fator_contribuinte.csv';
+set vFileNameOutput = 'DIM_FATOR.QVD';
+
+$(vTableName):
+LOAD
+    codigo_ocorrencia3,
+    fator_nome,
+    fator_aspecto,
+    fator_condicionante,
+    fator_area
+FROM [$(vPathImport)$(vFileNameOrigin)]
+(txt, codepage is 28591, embedded labels, delimiter is ';', msq);
+
+
+STORE $(vTableName) INTO [$(vPathExtract)$(vFileNameOutput)](qvd);
+
+drop table $(vTableName);
+ 
