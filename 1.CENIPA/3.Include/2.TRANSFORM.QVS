@@ -1,6 +1,7 @@
 // COMMOM
 $(MUST_INCLUDE='lib://1.CENIPA/3.Include/MAIN.QVS');
 $(MUST_INCLUDE='lib://1.CENIPA/3.Include/VARS.QVS');
+$(MUST_INCLUDE='lib://1.CENIPA/3.Include/EXPRESSIONS.QVS');
 
 
 

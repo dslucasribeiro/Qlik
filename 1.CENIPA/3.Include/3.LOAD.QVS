@@ -1,9 +1,3 @@
-// COMMOM
-$(MUST_INCLUDE='lib://1.CENIPA/3.Include/MAIN.QVS');
-$(MUST_INCLUDE='lib://1.CENIPA/3.Include/VARS.QVS');
-
-
-
 // LOAD
 set vTableName = 'FATO_OCORRENCIA';
 set vFileNameOrigin = 'FATO_OCORRENCIA.QVD';
