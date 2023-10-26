@@ -1,0 +1,15 @@
+// LOAD
+set vTableName = 'FATO_OCORRENCIA';
+set vFileNameOrigin = 'FATO_OCORRENCIA.QVD';
+$(vTableName):
+LOAD * FROM [$(vPathTransform)$(vFileNameOrigin)](QVD);
+
+set vTableName = 'DIM_AERONAVE';
+set vFileNameOrigin = 'DIM_AERONAVE.QVD';
+$(vTableName):
+LOAD * FROM [$(vPathTransform)$(vFileNameOrigin)](QVD);
+
+set vTableName = 'DIM_FATOR';
+set vFileNameOrigin = 'DIM_FATOR.QVD';
+$(vTableName):
+LOAD * FROM [$(vPathTransform)$(vFileNameOrigin)](QVD);

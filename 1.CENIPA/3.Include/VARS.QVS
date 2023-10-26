@@ -8,4 +8,4 @@ set vPathImport = 'lib://1.CENIPA/5.Import/';
 // PATH QVDS
 set vPathExtract = 'lib://1.CENIPA/2.QVD/1.Extract/';
 set vPathTransform = 'lib://1.CENIPA/2.QVD/2.Transform/';
-set vPathTransform = 'lib://1.CENIPA/2.QVD/3.Load/';
+set vPathLoad = 'lib://1.CENIPA/2.QVD/3.Load/';
