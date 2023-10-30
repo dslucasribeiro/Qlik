@@ -9,9 +9,9 @@ LOAD *,
     SubField(divulgacao_relatorio_numero, '/', 3) as Periodo
     ;
 LOAD
-    codigo_ocorrencia as %KeyOcorrencia,
-    codigo_ocorrencia2 as %KeyAeronave,
-    codigo_ocorrencia3 as %KeyFator,
+    AutoNumber(codigo_ocorrencia) as %KeyOcorrencia,
+    AutoNumber(codigo_ocorrencia2) as %KeyAeronave,
+    AutoNumber(codigo_ocorrencia3) as %KeyFator,
     codigo_ocorrencia as [Ocorrencia_Codigo],
     ocorrencia_classificacao,
     //ocorrencia_latitude,

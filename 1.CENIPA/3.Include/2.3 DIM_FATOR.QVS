@@ -1,10 +1,11 @@
-set vTableName = 'DIM_FATOR';
+﻿set vTableName = 'DIM_FATOR';
 set vFileNameOrigin = 'DIM_FATOR.QVD';
 set vFileNameOutput = 'DIM_FATOR.QVD';
 
+
 $(vTableName):
 LOAD
-    codigo_ocorrencia3 as %KeyFator,
+    AutoNumber(codigo_ocorrencia3) as %KeyFator,
     codigo_ocorrencia3 as [Fator_Codigo_Ocorrencia],
     fator_nome,
     fator_aspecto,
@@ -16,4 +17,37 @@ FROM [$(vPathExtract)$(vFileNameOrigin)](QVD);
 STORE $(vTableName) INTO [$(vPathTransform)$(vFileNameOutput)](qvd);
 
 drop table $(vTableName);
+
+
+
+// //PERFOMANCE
+// //TABELA DE FILTRO
+// FiltroFator:
+// LOAD * Inline [
+//     fator_nome
+//     PERCEPÇÃO
+// ];
+
+// //TABELA TEMPORARIA
+// $(vTableName)_Temp:
+// LOAD
+//     *
+// FROM [$(vPathExtract)$(vFileNameOrigin)](QVD)
+// where Exists(fator_nome);
+
+// //TABELA DE TRATAMENTO
+// $(vTableName):
+// LOAD
+//     AutoNumber(codigo_ocorrencia3) as %KeyFator,
+//     codigo_ocorrencia3 as [Fator_Codigo_Ocorrencia],
+//     fator_nome,
+//     fator_aspecto,
+//     fator_condicionante,
+//     fator_area
+// Resident $(vTableName)_Temp;
+
+
+// STORE $(vTableName) INTO [$(vPathTransform)$(vFileNameOutput)](qvd);
+
+// //drop table $(vTableName);
  
