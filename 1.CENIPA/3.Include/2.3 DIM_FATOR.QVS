@@ -4,7 +4,8 @@ set vFileNameOutput = 'DIM_FATOR.QVD';
 
 $(vTableName):
 LOAD
-    codigo_ocorrencia3,
+    codigo_ocorrencia3 as %KeyFator,
+    codigo_ocorrencia3 as [Fator_Codigo_Ocorrencia],
     fator_nome,
     fator_aspecto,
     fator_condicionante,

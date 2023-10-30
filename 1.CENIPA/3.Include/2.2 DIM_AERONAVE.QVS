@@ -4,7 +4,8 @@ set vFileNameOutput = 'DIM_AERONAVE.QVD';
 
 $(vTableName):
 LOAD
-    codigo_ocorrencia2,
+    codigo_ocorrencia2 as %KeyAeronave,
+    codigo_ocorrencia2 as [Aeronave_Codigo_Ocorrencia],
     aeronave_matricula,
     aeronave_operador_categoria,
     aeronave_tipo_veiculo,

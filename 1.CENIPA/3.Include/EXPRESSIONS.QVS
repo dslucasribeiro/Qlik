@@ -1,6 +1,10 @@
 // SCRIPT EXPRESSIONS 
 set vExpNullTratement = if ($1 = '***' or $1 = '****' or $1 = 'NULL' or $1 = '' or len($1) = 0, $2, $1);
 
+set vExpDivideForZero = $1 / if($2 = 0, 1, $2);
+
+set vExpMultiple3Factor = $1*$2*$3;
+
 // GRAPHIC EXPRESSIONS
 
 

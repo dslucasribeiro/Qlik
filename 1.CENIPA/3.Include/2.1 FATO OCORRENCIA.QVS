@@ -3,12 +3,16 @@ set vFileNameOrigin = 'FATO_OCORRENCIA.QVD';
 set vFileNameOutput = 'FATO_OCORRENCIA.QVD';
 
 $(vTableName):
+LOAD *,
+    SubField(divulgacao_relatorio_numero, '/', 1) as Codigo,
+    SubField(divulgacao_relatorio_numero, '/', 2) as Orgao,
+    SubField(divulgacao_relatorio_numero, '/', 3) as Periodo
+    ;
 LOAD
-    codigo_ocorrencia,
-    codigo_ocorrencia1,
-    codigo_ocorrencia2,
-    codigo_ocorrencia3,
-    codigo_ocorrencia4,
+    codigo_ocorrencia as %KeyOcorrencia,
+    codigo_ocorrencia2 as %KeyAeronave,
+    codigo_ocorrencia3 as %KeyFator,
+    codigo_ocorrencia as [Ocorrencia_Codigo],
     ocorrencia_classificacao,
     //ocorrencia_latitude,
     $(vExpNullTratement(ocorrencia_latitude, 0)) as ocorrencia_latitude,
@@ -22,13 +26,16 @@ LOAD
     ocorrencia_hora,
     investigacao_aeronave_liberada,
     investigacao_status,
-    divulgacao_relatorio_numero,
+    //divulgacao_relatorio_numero,
+    $(vExpNullTratement(divulgacao_relatorio_numero, 0)) as divulgacao_relatorio_numero,
     divulgacao_relatorio_publicado,
     divulgacao_dia_publicacao,
     total_recomendacoes,
     total_aeronaves_envolvidas,
     ocorrencia_saida_pista
 FROM [$(vPathExtract)$(vFileNameOrigin)](QVD);
+
+Drop Field divulgacao_relatorio_numero;
 
 
 STORE $(vTableName) INTO [$(vPathTransform)$(vFileNameOutput)](qvd);
