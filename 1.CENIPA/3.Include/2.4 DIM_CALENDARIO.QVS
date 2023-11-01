@@ -1,0 +1,56 @@
+﻿set vTableName = 'DIM_MASTERCALENDAR';
+//set vFileNameOrigin = 'DIM_MASTERCALENDAR.QVD';
+set vFileNameOutput = 'DIM_MASTERCALENDAR.QVD';
+
+
+QuartersMap:
+MAPPING LOAD 
+rowno() as Month,
+'T' & Ceil (rowno()/3) as Quarter
+AUTOGENERATE (12);
+
+Temp:
+Load
+	min(ocorrencia_dia) as minDate,
+	max(ocorrencia_dia) as maxDate
+Resident FATO_OCORRENCIA; // Verificar Tabelas
+
+Let varMinDate = Num(Peek('minDate', 0, 'Temp'));
+Let varMaxDate = Num(Peek('maxDate', 0, 'Temp'));
+
+DROP Table Temp;
+
+TempCalendar:
+LOAD
+	  $(varMinDate) + Iterno()-1 As Num,
+      Date($(varMinDate) + IterNo() - 1) as TempDate
+AutoGenerate 1 While $(varMinDate) + IterNo() -1 <= $(varMaxDate);
+
+$(vTableName):
+Load *,
+	 Mes&'-'&Ano as MesAno;
+Load
+
+               AutoNumber(TempDate) AS %KeyCalendario,
+               week(TempDate) As Semana,
+               Year(TempDate) As Ano,
+               Month(TempDate) As Mes,
+              
+               Day(TempDate) As Dia,
+               YeartoDate(TempDate)*-1 as CurYTDFlag,
+               YeartoDate(TempDate,-1)*-1 as LastYTDFlag,
+               inyear(TempDate, Monthstart($(varMaxDate)),-1) as RC12,
+               date(monthstart(TempDate), 'MM-YY') as MonthYear,
+               ApplyMap('QuartersMap', month(TempDate), Null()) as Quarter,
+               Week(weekstart(TempDate)) & '-' & WeekYear(TempDate) as WeekYear,
+               WeekDay(TempDate) as WeekDay
+
+Resident TempCalendar
+
+Order By TempDate ASC;
+
+Drop Table TempCalendar;
+
+STORE $(vTableName) INTO [$(vPathTransform)$(vFileNameOutput)](qvd);
+
+drop table $(vTableName);

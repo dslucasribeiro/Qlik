@@ -13,3 +13,9 @@ set vTableName = 'DIM_FATOR';
 set vFileNameOrigin = 'DIM_FATOR.QVD';
 $(vTableName):
 LOAD * FROM [$(vPathTransform)$(vFileNameOrigin)](QVD);
+
+
+set vTableName = 'DIM_MASTERCALENDAR';
+set vFileNameOrigin = 'DIM_MASTERCALENDAR.QVD';
+$(vTableName):
+LOAD * FROM [$(vPathTransform)$(vFileNameOrigin)](QVD);

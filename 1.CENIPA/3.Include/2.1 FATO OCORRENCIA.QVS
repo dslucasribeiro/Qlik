@@ -12,6 +12,7 @@ LOAD
     AutoNumber(codigo_ocorrencia) as %KeyOcorrencia,
     AutoNumber(codigo_ocorrencia2) as %KeyAeronave,
     AutoNumber(codigo_ocorrencia3) as %KeyFator,
+    AutoNumber(ocorrencia_dia) AS %KeyCalendario,
     codigo_ocorrencia as [Ocorrencia_Codigo],
     ocorrencia_classificacao,
     //ocorrencia_latitude,
@@ -40,4 +41,4 @@ Drop Field divulgacao_relatorio_numero;
 
 STORE $(vTableName) INTO [$(vPathTransform)$(vFileNameOutput)](qvd);
 
-drop table $(vTableName);
+//drop table $(vTableName); //nao dropado para ser usado na master calendar
