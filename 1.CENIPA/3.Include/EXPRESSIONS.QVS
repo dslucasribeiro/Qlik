@@ -5,6 +5,8 @@ set vExpDivideForZero = $1 / if($2 = 0, 1, $2);
 
 set vExpMultiple3Factor = $1*$2*$3;
 
+set vExpNullProducer = if ($1 = '', 'Desconhecido', $1);
+
 // GRAPHIC EXPRESSIONS
 
 
