@@ -1,4 +1,4 @@
-// SCRIPT EXPRESSIONS 
+﻿// SCRIPT EXPRESSIONS 
 set vExpNullTratement = if ($1 = '***' or $1 = '****' or $1 = 'NULL' or $1 = '' or len($1) = 0, $2, $1);
 
 set vExpDivideForZero = $1 / if($2 = 0, 1, $2);
@@ -11,3 +11,17 @@ set vExpNullProducer = if ($1 = '', 'Desconhecido', $1);
 
 
 // MASTER ITENS EXPRESSIONS
+//## Metrica Numero de Ocorrencias
+set vMetricOcorrencia = 'Count(Ocorrencia_Codigo)';
+set vMetricOcorrenciaTitle = 'Ocorrências';
+set vMetricOcorrenciaSubTitle = 'Ocorrências ao longo do periodo selecionado.';
+
+//## Metrica Numero de Estados
+set vMetricOcorrencia = 'Count(distinct ocorrencia_uf)';
+set vMetricOcorrenciaTitle = 'UFs';
+set vMetricOcorrenciaSubTitle = 'UFs ao longo do periodo selecionado.';
+
+//## Metrica Numero de Fatalidades
+set vMetricOcorrencia = 'Sum(aeronave_fatalidades_total)';
+set vMetricOcorrenciaTitle = 'Fatalidades';
+set vMetricOcorrenciaSubTitle = 'Fatalidades ao longo do periodo selecionado.';
