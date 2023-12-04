@@ -17,11 +17,11 @@ set vMetricOcorrenciaTitle = 'Ocorrências';
 set vMetricOcorrenciaSubTitle = 'Ocorrências ao longo do periodo selecionado.';
 
 //## Metrica Numero de Estados
-set vMetricOcorrencia = 'Count(distinct ocorrencia_uf)';
-set vMetricOcorrenciaTitle = 'UFs';
-set vMetricOcorrenciaSubTitle = 'UFs ao longo do periodo selecionado.';
+set vMetricUFs = 'Count(distinct ocorrencia_uf)';
+set vMetricUFsTitle = 'UFs';
+set vMetricUFsSubTitle = 'UFs ao longo do periodo selecionado.';
 
 //## Metrica Numero de Fatalidades
-set vMetricOcorrencia = 'Sum(aeronave_fatalidades_total)';
-set vMetricOcorrenciaTitle = 'Fatalidades';
-set vMetricOcorrenciaSubTitle = 'Fatalidades ao longo do periodo selecionado.';
+set vMetricFatalidades = 'Sum(aeronave_fatalidades_total)';
+set vMetricFatalidadesTitle = 'Fatalidades';
+set vMetricFatalidadesSubTitle = 'Fatalidades ao longo do periodo selecionado.';
